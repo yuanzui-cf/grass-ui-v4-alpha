@@ -1,0 +1,31 @@
+{
+    "name": "grassui",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "rollup -wc",
+        "prod": "rollup --config rollup.config.product.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "description": "",
+    "devDependencies": {
+        "@babel/core": "^7.24.9",
+        "@babel/preset-env": "^7.24.8",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "autoprefixer": "^10.4.19",
+        "cssnano": "^7.0.4",
+        "less": "^4.2.0",
+        "postcss": "^8.4.39",
+        "rollup": "^4.18.1",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-postcss": "^4.0.2"
+    },
+    "dependencies": {
+        "colorjs.io": "^0.5.2",
+        "gsap": "^3.12.5"
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

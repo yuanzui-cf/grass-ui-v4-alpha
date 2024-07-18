@@ -1,0 +1,50 @@
+@keyframes gui-slide-in {
+    100% {
+        left: -100%;
+    }
+}
+
+@keyframes gui-slide-out {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+.gui-slide {
+    --height: 300px;
+    width: 100%;
+    height: var(--height);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+
+    > .display {
+        display: flex;
+        flex-direction: column;
+        left: 0;
+    }
+
+    > :not(.display) {
+        display: none;
+    }
+
+    * {
+        flex-shrink: 0;
+        width: 100%;
+    }
+
+    > img {
+        flex-shrink: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        .dark({
+            filter: brightness(80%);
+        });
+    }
+}

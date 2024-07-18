@@ -1,0 +1,1 @@
+*{margin:0;padding:0}#app,body,html{align-items:center;display:flex;flex-direction:column;height:100%;width:100%}body{background-color:var(--theme-color-pretty-light)}@media (prefers-color-scheme:dark){body{background-color:var(--theme-color-pretty-dark)}}

@@ -1,0 +1,53 @@
+@import url(../util.less);
+
+.gui-button {
+    .base() {
+        box-sizing: border-box;
+        height: 34px;
+        background-color: var(--theme-color-light);
+        outline: none;
+        border: 2px solid var(--theme-color-dark);
+        border-radius: 34px;
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+        .dark({
+            background-color: var(--theme-color-dark);
+            color: var(--theme-color-extreme-light);
+            border: 2px solid var(--theme-color-extreme-light);
+        });
+
+        img {
+            height: 90%;
+        }
+
+        i {
+            font-size: 12px;
+        }
+    }
+
+    .base();
+    width: auto;
+    min-width: 80px;
+    padding: 5px 20px;
+
+    &-icon {
+        .base();
+        width: 34px;
+        padding: 5px;
+    }
+}
+
+.gui-button:hover {
+    background-color: var(--theme-color-light-hover);
+
+    .dark({
+        background-color: var(--theme-color-dark-hover)
+    });
+}

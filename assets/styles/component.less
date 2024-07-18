@@ -1,0 +1,32 @@
+@import url(./component/button.less);
+@import url(./component/slide.less);
+
+.gui-box {
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--height);
+    padding: 30px;
+    background-color: var(--theme-color-extreme-light-hover);
+    border: 2px solid var(--theme-color-dark);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+
+    .dark({
+        background-color: var(--theme-color-extreme-dark-hover);
+        border: 2px solid var(--theme-color-extreme-light);
+    });
+
+    .mobile({
+        padding: 20px;
+    });
+}
+
+// rules
+.gui-hidden-on-mobile {
+    .mobile({
+        display: none;
+    });
+}

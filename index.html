@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Grass Design Test</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link
+            href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/dist/css/grassui.css" />
+        <script src="./assets/dist/grassui.js"></script>
+        <script>
+            const g = new GrassUI();
+            g.init(window);
+        </script>
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <div id="title1">
+                    <div class="left">
+                        <h1><i class="fa-brands fa-github"></i></h1>
+                        <h1 class="gui-hidden-on-mobile">Grass Design v4</h1>
+                    </div>
+                    <div class="right">
+                        <button class="gui-button-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                        <button class="gui-button">
+                            <i class="fa-solid fa-user"></i>
+                            Start
+                        </button>
+                    </div>
+                </div>
+                <div id="title2">
+                    <div class="left">111</div>
+                    <div class="right">111</div>
+                </div>
+            </header>
+            <main>
+                <div class="gui-main">
+                    <div class="gui-slide">
+                        <img
+                            src="./assets/image/slide/0.jpg"
+                            alt
+                            class="display"
+                            now
+                        />
+                        <img src="./assets/image/slide/1.jpg" alt />
+                        <img src="./assets/image/slide/2.jpg" alt />
+                        <img src="./assets/image/slide/3.jpg" alt />
+                        <img src="./assets/image/slide/4.jpg" alt />
+                    </div>
+                    <div class="gui-box" style="--height: 300px">
+                        <h1>Hello, Grass Design</h1>
+                        <h2>This is a demo.</h2>
+                    </div>
+                    <div class="gui-box"></div>
+                </div>
+                <div class="gui-sidebar">
+                    <div class="gui-box"></div>
+                    <div class="gui-box"></div>
+                </div>
+            </main>
+            <footer>Copyright &copy; 2024. All rights reserved.</footer>
+        </div>
+    </body>
+</html>
