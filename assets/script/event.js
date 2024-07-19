@@ -15,18 +15,18 @@ export class GrassUIEvent {
         setTimeout(() => this.listen(), 100);
     }
 
-    onDarkModeChange() {
+    async onDarkModeChange() {
         if (this.root.style.colorScheme != this.darkmode) {
             this.root.style.colorScheme = this.darkmode;
         }
     }
 
-    setDarkMode(mode) {
+    async setDarkMode(mode) {
         this.darkmode = mode ? mode : "normal";
         localStorage.setItem("darkmode", this.darkmode);
     }
 
-    onThemeColorChange() {
+    async onThemeColorChange() {
         if (
             window
                 .getComputedStyle(this.root)
@@ -36,7 +36,7 @@ export class GrassUIEvent {
         }
     }
 
-    setThemeColor(themeColor) {
+    async setThemeColor(themeColor) {
         this.themeColor = themeColor;
     }
 
