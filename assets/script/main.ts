@@ -2,7 +2,6 @@ import "../styles/main.less";
 import "../styles/component.less";
 import { GrassUIEvent } from "./event";
 import { Slide } from "./component/slide.js";
-import { Color } from "./util/color";
 
 export default class GrassUI extends GrassUIEvent {
     init() {
@@ -15,14 +14,12 @@ export default class GrassUI extends GrassUIEvent {
         const darkmode = localStorage.getItem("darkmode") || "normal";
         this.setDarkMode(darkmode);
 
-        new Color("#ffffff").lighten(1);
-
         window.addEventListener("load", () => {
             this.initSlide();
-            // this.initTheme();
+            this.initTheme();
         });
 
-        // this.listen();
+        this.listen();
     }
 
     async initSlide() {
