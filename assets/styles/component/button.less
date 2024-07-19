@@ -15,7 +15,7 @@
         justify-content: center;
         gap: 8px;
         cursor: pointer;
-        transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         .dark({
             background-color: var(--theme-color-dark);
@@ -36,6 +36,21 @@
     width: auto;
     min-width: 80px;
     padding: 5px 20px;
+
+    &.full {
+        width: 100%;
+    }
+
+    &-group {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        &.reversed {
+            flex-direction: row-reverse;
+        }
+    }
 
     &-icon {
         .base();

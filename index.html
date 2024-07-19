@@ -12,7 +12,7 @@
         <script src="./assets/dist/grassui.js"></script>
         <script>
             const g = new GrassUI();
-            g.init(window);
+            g.init();
         </script>
     </head>
     <body>
@@ -41,20 +41,74 @@
             <main>
                 <div class="gui-main">
                     <div class="gui-slide">
-                        <img
-                            src="./assets/image/slide/0.jpg"
-                            alt
-                            class="display"
-                            now
-                        />
-                        <img src="./assets/image/slide/1.jpg" alt />
-                        <img src="./assets/image/slide/2.jpg" alt />
+                        <a href="https://baidu.com" class="display" now>
+                            <img src="./assets/image/slide/0.jpg" alt />
+                        </a>
+                        <a>
+                            <img src="./assets/image/slide/1.jpg" alt />
+                        </a>
+                        <a>
+                            <img src="./assets/image/slide/2.jpg" alt />
+                        </a>
                         <img src="./assets/image/slide/3.jpg" alt />
                         <img src="./assets/image/slide/4.jpg" alt />
                     </div>
-                    <div class="gui-box" style="--height: 300px">
+                    <div class="gui-box">
                         <h1>Hello, Grass Design</h1>
                         <h2>This is a demo.</h2>
+                        <article>
+                            <section>
+                                <h3>Title</h3>
+                                <p>This is a pharagraph.</p>
+                            </section>
+                            <section>
+                                <button class="gui-button">Test Button</button>
+                                <button class="gui-button full">
+                                    Full Button
+                                </button>
+                                <div class="gui-button-group">
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">
+                                        Test Button
+                                    </button>
+                                    <button class="gui-button">Test</button>
+                                </div>
+                                <div class="gui-button-group reversed">
+                                    <button
+                                        data-theme-color="#efb4c4"
+                                        class="gui-button"
+                                    >
+                                        Test Button
+                                    </button>
+                                    <button
+                                        data-theme-color="#465cab"
+                                        class="gui-button"
+                                    >
+                                        Test Button
+                                    </button>
+                                    <button
+                                        data-theme-color="#a34d55"
+                                        class="gui-button"
+                                    >
+                                        Test Button
+                                    </button>
+                                </div>
+                            </section>
+                        </article>
                     </div>
                     <div class="gui-box"></div>
                 </div>

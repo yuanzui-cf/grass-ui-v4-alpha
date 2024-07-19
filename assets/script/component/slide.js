@@ -2,7 +2,7 @@ export class Slide {
     /** @type {HTMLElement} */
     ele;
     /** @type {Number} */
-    _stay_time = 2000;
+    _stay_time = 5000;
     /** @type {Number} */
     _timer = -1;
     /** @type {Number} */
@@ -47,7 +47,7 @@ export class Slide {
         const changeSize = () => {
             this.ele.style.setProperty(
                 "--height",
-                `${(this.ele.clientWidth / this._scale[0]) * this._scale[1]}`
+                `${(this.ele.clientWidth / this._scale[0]) * this._scale[1]}px`
             );
         };
         window.addEventListener("resize", changeSize);

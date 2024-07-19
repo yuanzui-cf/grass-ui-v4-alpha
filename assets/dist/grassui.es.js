@@ -6158,6 +6158,7 @@ var GrassUIEvent = /*#__PURE__*/function () {
   function GrassUIEvent() {
     _classCallCheck(this, GrassUIEvent);
     // Root Class
+    /** @type {HTMLElement} */
     _defineProperty(this, "root", document.querySelector(":root"));
     // Settings
     _defineProperty(this, "darkmode", "normal");
@@ -6204,21 +6205,32 @@ var GrassUIEvent = /*#__PURE__*/function () {
     key: "onThemeColorChange",
     value: function onThemeColorChange() {
       if (window.getComputedStyle(this.root).getPropertyValue("--theme-color") != this.themeColor) {
-        this.root.style.setProperty("--theme-color", this.themeColor);
-        this.root.style.setProperty("--theme-color-light", new Color(this.themeColor).lighten(0.65));
-        this.root.style.setProperty("--theme-color-light-hover", new Color(this.themeColor).lighten(0.6));
-        this.root.style.setProperty("--theme-color-extreme-light", new Color(this.themeColor).lighten(0.785));
-        this.root.style.setProperty("--theme-color-extreme-light-hover", new Color(this.themeColor).lighten(0.76));
-        this.root.style.setProperty("--theme-color-dark", new Color(this.themeColor).darken(0.2));
-        this.root.style.setProperty("--theme-color-dark-hover", new Color(this.themeColor).darken(0.3));
-        this.root.style.setProperty("--theme-color-extreme-dark", new Color(this.themeColor).darken(0.65));
-        this.root.style.setProperty("--theme-color-extreme-dark-hover", new Color(this.themeColor).darken(0.6));
+        this.changeThemeColor(this.themeColor, this.root);
       }
     }
   }, {
     key: "setThemeColor",
     value: function setThemeColor(themeColor) {
       this.themeColor = themeColor;
+    }
+
+    /**
+     *
+     * @param {String} color
+     * @param {HTMLElement} root
+     */
+  }, {
+    key: "changeThemeColor",
+    value: function changeThemeColor(color, root) {
+      root.style.setProperty("--theme-color", color);
+      root.style.setProperty("--theme-color-light", new Color(color).lighten(0.65));
+      root.style.setProperty("--theme-color-light-hover", new Color(color).lighten(0.6));
+      root.style.setProperty("--theme-color-extreme-light", new Color(color).lighten(0.785));
+      root.style.setProperty("--theme-color-extreme-light-hover", new Color(color).lighten(0.76));
+      root.style.setProperty("--theme-color-dark", new Color(color).darken(0.2));
+      root.style.setProperty("--theme-color-dark-hover", new Color(color).darken(0.3));
+      root.style.setProperty("--theme-color-extreme-dark", new Color(color).darken(0.65));
+      root.style.setProperty("--theme-color-extreme-dark-hover", new Color(color).darken(0.6));
     }
   }]);
 }();
@@ -6233,7 +6245,7 @@ var Slide = /*#__PURE__*/function () {
     /** @type {HTMLElement} */
     _defineProperty(this, "ele", void 0);
     /** @type {Number} */
-    _defineProperty(this, "_stay_time", 2000);
+    _defineProperty(this, "_stay_time", 5000);
     /** @type {Number} */
     _defineProperty(this, "_timer", -1);
     /** @type {Number} */
@@ -6279,7 +6291,7 @@ var Slide = /*#__PURE__*/function () {
       var _this = this;
       // Set Size
       var changeSize = function changeSize() {
-        _this.ele.style.setProperty("--height", "".concat(_this.ele.clientWidth / _this._scale[0] * _this._scale[1]));
+        _this.ele.style.setProperty("--height", "".concat(_this.ele.clientWidth / _this._scale[0] * _this._scale[1], "px"));
       };
       window.addEventListener("resize", changeSize);
       changeSize();
@@ -6322,56 +6334,40 @@ var Slide = /*#__PURE__*/function () {
 
 var GrassUI = /*#__PURE__*/function (_GrassUIEvent) {
   function GrassUI() {
-    var _this;
     _classCallCheck(this, GrassUI);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _callSuper(this, GrassUI, [].concat(args));
-    /**
-     * @type {Window & typeof globalThis}
-     */
-    _defineProperty(_this, "window", void 0);
-    return _this;
+    return _callSuper(this, GrassUI, arguments);
   }
   _inherits(GrassUI, _GrassUIEvent);
   return _createClass(GrassUI, [{
     key: "init",
-    value:
-    /**
-     * @param {Window} window
-     */
-    function init(window) {
+    value: function init() {
+      var _this = this;
       console.log("%cGrass UI%cv4-alpha", "padding: 5px; background-color: rgb(20,60,20); color: white; border-radius: 4px 0 0 4px", "padding: 5px; background-color: rgba(20,60,20,.3); border-radius: 0 4px 4px 0");
-      this.window = window;
       var darkmode = localStorage.getItem("darkmode");
       this.setDarkMode(darkmode);
-      this.initSlide();
+      window.addEventListener("load", function () {
+        _this.initSlide();
+        _this.initTheme();
+      });
       this.listen();
     }
   }, {
     key: "initSlide",
-    value: function () {
-      var _initSlide = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var slide;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              slide = this.window.document.querySelectorAll(".gui-slide");
-              slide.forEach(function (item) {
-                new Slide(item).build();
-              });
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, this);
-      }));
-      function initSlide() {
-        return _initSlide.apply(this, arguments);
-      }
-      return initSlide;
-    }()
+    value: function initSlide() {
+      var slide = window.document.querySelectorAll(".gui-slide");
+      slide.forEach(function (item) {
+        new Slide(item).build();
+      });
+    }
+  }, {
+    key: "initTheme",
+    value: function initTheme() {
+      var _this2 = this;
+      var theme = window.document.querySelectorAll("[data-theme-color]");
+      theme.forEach(function (item) {
+        _this2.changeThemeColor(item.getAttribute("data-theme-color"), item);
+      });
+    }
   }]);
 }(GrassUIEvent);
 

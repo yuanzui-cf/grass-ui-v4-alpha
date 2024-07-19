@@ -36,12 +36,33 @@
         width: 100%;
     }
 
-    > img {
+    .animation() {
+        animation-delay: 0s;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-direction: normal;
+        animation-timing-function: ease-in-out;
+    }
+
+    &-in {
+        animation-name: gui-slide-in;
+        .animation();
+    }
+
+    &-out {
+        animation-name: gui-slide-out;
+        .animation();
+    }
+
+    > img,
+    > a {
         flex-shrink: 0;
         position: relative;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        display: block;
+        user-select: none;
 
         .dark({
             filter: brightness(80%);
