@@ -22,14 +22,14 @@ export default class GrassUI extends GrassUIEvent {
         this.listen();
     }
 
-    initSlide() {
+    async initSlide() {
         const slide = window.document.querySelectorAll(".gui-slide");
         slide.forEach((item) => {
             new Slide(item).build();
         });
     }
 
-    initTheme() {
+    async initTheme() {
         const theme = window.document.querySelectorAll("[data-theme-color]");
         theme.forEach((item) => {
             this.changeThemeColor(item.getAttribute("data-theme-color"), item);
