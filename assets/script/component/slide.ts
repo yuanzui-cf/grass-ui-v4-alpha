@@ -1,20 +1,16 @@
 export class Slide {
     /** @type {HTMLElement} */
     ele;
-    /** @type {Number} */
+    /** @type {number} */
     _stay_time = 5000;
-    /** @type {Number} */
+    /** @type {number} */
     _timer = -1;
-    /** @type {Number} */
+    /** @type {number} */
     _now = 0;
-    /** @type {[Number, Number]} */
+    /** @type {[number, number]} */
     _scale = [7.7, 3];
 
-    /**
-     * Slide constructor.
-     * @param {HTMLElement} ele
-     */
-    constructor(ele) {
+    constructor(ele: HTMLElement) {
         if (!ele.classList.contains("gui-slide")) {
             ele.classList.add("gui-slide");
         }
@@ -23,21 +19,21 @@ export class Slide {
 
     /**
      * Set stay time of slide.
-     * @param {Number} time
+     * @param {number} time
      * @return {Slide}
      */
-    setStayTime(time = 2000) {
+    setStayTime(time = 2000): Slide {
         this._stay_time = time;
         return this;
     }
 
     /**
      * Set scale of slide.
-     * @param {Number} x
-     * @param {Number} y
+     * @param {number} x
+     * @param {number} y
      * @return {Slide}
      */
-    setScale(x = 7.7, y = 3) {
+    setScale(x = 7.7, y = 3): Slide {
         this._scale = [x, y];
         return this;
     }
@@ -65,7 +61,8 @@ export class Slide {
             if (this._now == children.length) {
                 this._now = 0;
             }
-            let prev, ani;
+            let prev = 0,
+                ani = "";
             this._now > 0
                 ? (() => {
                       this.ele.classList.remove("reverse");

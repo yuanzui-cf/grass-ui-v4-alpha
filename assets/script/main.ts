@@ -1,7 +1,7 @@
 import "../styles/main.less";
 import "../styles/component.less";
 import { GrassUIEvent } from "./event";
-import { Slide } from "./component/slide";
+import { Slide } from "./component/slide.js";
 
 export default class GrassUI extends GrassUIEvent {
     init() {
@@ -11,7 +11,7 @@ export default class GrassUI extends GrassUIEvent {
             "padding: 5px; background-color: rgba(20,60,20,.3); border-radius: 0 4px 4px 0"
         );
 
-        const darkmode = localStorage.getItem("darkmode");
+        const darkmode = localStorage.getItem("darkmode") || "normal";
         this.setDarkMode(darkmode);
 
         window.addEventListener("load", () => {
@@ -25,14 +25,17 @@ export default class GrassUI extends GrassUIEvent {
     async initSlide() {
         const slide = window.document.querySelectorAll(".gui-slide");
         slide.forEach((item) => {
-            new Slide(item).build();
+            new Slide(item as HTMLElement).build();
         });
     }
 
     async initTheme() {
         const theme = window.document.querySelectorAll("[data-theme-color]");
         theme.forEach((item) => {
-            this.changeThemeColor(item.getAttribute("data-theme-color"), item);
+            this.changeThemeColor(
+                item.getAttribute("data-theme-color")!,
+                item as HTMLElement
+            );
         });
     }
 }

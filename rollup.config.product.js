@@ -4,9 +4,10 @@ import cssnanoPlugin from "cssnano";
 import commonjs from "rollup-plugin-commonjs";
 import terser from "@rollup/plugin-terser";
 import nodeResolve from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
-    input: "./assets/script/main.js",
+    input: "./assets/script/main.ts",
     output: [
         {
             file: "./assets/dist/grassui.min.js",
@@ -29,5 +30,6 @@ export default {
         commonjs(),
         terser(),
         nodeResolve(),
+        typescript(),
     ],
 };

@@ -2,8 +2,7 @@ import Color from "colorjs.io";
 
 export class GrassUIEvent {
     // Root Class
-    /** @type {HTMLElement} */
-    root = document.querySelector(":root");
+    root: HTMLElement = document.querySelector(":root")!;
 
     // Settings
     darkmode = "normal";
@@ -21,8 +20,8 @@ export class GrassUIEvent {
         }
     }
 
-    async setDarkMode(mode) {
-        this.darkmode = mode ? mode : "normal";
+    async setDarkMode(mode: string) {
+        this.darkmode = mode;
         localStorage.setItem("darkmode", this.darkmode);
     }
 
@@ -36,47 +35,52 @@ export class GrassUIEvent {
         }
     }
 
-    async setThemeColor(themeColor) {
+    async setThemeColor(themeColor: string) {
         this.themeColor = themeColor;
     }
-
-    /**
-     * 改变主题颜色
-     * @param {string} color
-     * @param {HTMLElement} root
-     */
-    changeThemeColor(color, root) {
+    
+    // @ts-ignore
+    async changeThemeColor(color: string, root: HTMLElement) {
+        // TODO: 将 Color 库迁移至自定义函数
         root.style.setProperty("--theme-color", color);
         root.style.setProperty(
             "--theme-color-light",
+            // @ts-ignore
             new Color(color).lighten(0.65)
         );
         root.style.setProperty(
             "--theme-color-light-hover",
+            // @ts-ignore
             new Color(color).lighten(0.6)
         );
         root.style.setProperty(
             "--theme-color-extreme-light",
+            // @ts-ignore
             new Color(color).lighten(0.785)
         );
         root.style.setProperty(
             "--theme-color-extreme-light-hover",
+            // @ts-ignore
             new Color(color).lighten(0.76)
         );
         root.style.setProperty(
             "--theme-color-dark",
+            // @ts-ignore
             new Color(color).darken(0.2)
         );
         root.style.setProperty(
             "--theme-color-dark-hover",
+            // @ts-ignore
             new Color(color).darken(0.3)
         );
         root.style.setProperty(
             "--theme-color-extreme-dark",
+            // @ts-ignore
             new Color(color).darken(0.65)
         );
         root.style.setProperty(
             "--theme-color-extreme-dark-hover",
+            // @ts-ignore
             new Color(color).darken(0.6)
         );
         root.style.setProperty(

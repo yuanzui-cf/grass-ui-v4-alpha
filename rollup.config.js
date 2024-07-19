@@ -2,9 +2,10 @@ import babel from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 import commonjs from "rollup-plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
 
 export default {
-    input: "./assets/script/main.js",
+    input: "./assets/script/main.ts",
     output: [
         {
             file: "./assets/dist/grassui.js",
@@ -25,5 +26,6 @@ export default {
         }),
         commonjs(),
         nodeResolve(),
+        typescript(),
     ],
 };
