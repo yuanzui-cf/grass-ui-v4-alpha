@@ -2,16 +2,16 @@ import "../styles/main.less";
 import "../styles/component.less";
 import { GrassUIEvent } from "./event";
 import { Slide } from "./component/slide.js";
-import Color from "colorjs.io";
+import Config from "./config";
 
 export default class GrassUI extends GrassUIEvent {
-    init() {
-        console.log(
-            "%cGrass UI%cv4-alpha",
-            "padding: 5px; background-color: rgb(20,60,20); color: white; border-radius: 4px 0 0 4px",
-            "padding: 5px; background-color: rgba(20,60,20,.3); border-radius: 0 4px 4px 0"
-        );
+    constructor(config: Config) {
+        super(config);
 
+        this.init();
+    }
+
+    init() {
         const darkmode = localStorage.getItem("darkmode") || "normal";
         this.setDarkMode(darkmode);
 
@@ -31,12 +31,27 @@ export default class GrassUI extends GrassUIEvent {
     }
 
     async initTheme() {
-        const theme = window.document.querySelectorAll("[data-theme-color]");
-        theme.forEach((item) => {
-            this.changeThemeColor(
-                item.getAttribute("data-theme-color")!,
-                item as HTMLElement
+        // Color
+        (async () => {
+            const color =
+                window.document.querySelectorAll("[data-theme-color]");
+            color.forEach((item) => {
+                this.changeThemeColor(
+                    item.getAttribute("data-theme-color")!,
+                    item as HTMLElement
+                );
+            });
+        })();
+        (async () => {
+            const radius = window.document.querySelectorAll(
+                "[data-theme-radius]"
             );
-        });
+            radius.forEach((item) => {
+                this.changeThemeColor(
+                    item.getAttribute("data-theme-radius")!,
+                    item as HTMLElement
+                );
+            });
+        })();
     }
 }

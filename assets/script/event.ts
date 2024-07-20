@@ -1,3 +1,4 @@
+import Config, { ThemeConfig } from "./config";
 import { Color } from "./util/color";
 
 export class GrassUIEvent {
@@ -6,11 +7,25 @@ export class GrassUIEvent {
 
     // Settings
     darkmode = "normal";
-    themeColor = "#1e8a3d";
+    theme: ThemeConfig;
+
+    constructor(config: Config) {
+        console.log(
+            "%cGrass UI%cv4-alpha",
+            "padding: 5px; background-color: rgb(20,60,20); color: white; border-radius: 4px 0 0 4px",
+            "padding: 5px; background-color: rgba(20,60,20,.3); border-radius: 0 4px 4px 0"
+        );
+
+        this.theme = {
+            color: config?.theme?.color || "#1e8a3d",
+            radius: config?.theme?.radius || "10px",
+        };
+    }
 
     async listen() {
         this.onDarkModeChange();
         this.onThemeColorChange();
+        this.onThemeRadiusChange();
         setTimeout(() => this.listen(), 100);
     }
 
@@ -29,14 +44,15 @@ export class GrassUIEvent {
         if (
             window
                 .getComputedStyle(this.root)
-                .getPropertyValue("--theme-color") != this.themeColor
+                .getPropertyValue("--theme-color") !=
+            this.theme.color!.toString()
         ) {
-            this.changeThemeColor(this.themeColor, this.root);
+            this.changeThemeColor(this.theme.color!.toString(), this.root);
         }
     }
 
     async setThemeColor(themeColor: string) {
-        this.themeColor = themeColor;
+        this.theme.color = themeColor;
     }
 
     async changeThemeColor(color: string, root: HTMLElement) {
@@ -85,5 +101,19 @@ export class GrassUIEvent {
             "--theme-color-extreme-light-alpha",
             new Color(color).lighten(0.8).alpha(0.6).toString()
         );
+    }
+
+    async onThemeRadiusChange() {
+        if (
+            window
+                .getComputedStyle(this.root)
+                .getPropertyValue("--theme-radius") != this.theme.radius!
+        ) {
+            this.root.style.setProperty("--theme-radius", this.theme.radius!);
+        }
+    }
+
+    async setThemeRadius(themeRadius: string) {
+        this.theme.radius = themeRadius;
     }
 }

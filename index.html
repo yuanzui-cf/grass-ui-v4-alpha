@@ -11,9 +11,11 @@
         <link rel="stylesheet" href="./assets/dist/css/grassui.css" />
         <script src="./assets/dist/grassui.js"></script>
         <script>
-            const g = new GrassUI();
-            g.init();
-            g.setThemeColor("#b33a2f");
+            const g = new GrassUI({
+                theme: {
+                    color: "#b33a2f",
+                },
+            });
         </script>
     </head>
     <body>
