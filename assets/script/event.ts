@@ -1,4 +1,4 @@
-import Color from "colorjs.io";
+import { Color } from "./util/color";
 
 export class GrassUIEvent {
     // Root Class
@@ -38,60 +38,52 @@ export class GrassUIEvent {
     async setThemeColor(themeColor: string) {
         this.themeColor = themeColor;
     }
-    
-    // @ts-ignore
+
     async changeThemeColor(color: string, root: HTMLElement) {
-        // TODO: 将 Color 库迁移至自定义函数
         root.style.setProperty("--theme-color", color);
         root.style.setProperty(
             "--theme-color-light",
-            // @ts-ignore
-            new Color(color).lighten(0.65)
+            new Color(color).lighten(0.4).toString()
         );
         root.style.setProperty(
             "--theme-color-light-hover",
-            // @ts-ignore
-            new Color(color).lighten(0.6)
+            new Color(color).lighten(0.45).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-light",
-            // @ts-ignore
-            new Color(color).lighten(0.785)
+            new Color(color).lighten(0.8).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-light-hover",
-            // @ts-ignore
-            new Color(color).lighten(0.76)
+            new Color(color).lighten(0.75).toString()
         );
         root.style.setProperty(
             "--theme-color-dark",
-            // @ts-ignore
-            new Color(color).darken(0.2)
+            new Color(color).darken(0.45).toString()
         );
         root.style.setProperty(
             "--theme-color-dark-hover",
-            // @ts-ignore
-            new Color(color).darken(0.3)
+            new Color(color).darken(0.4).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-dark",
-            // @ts-ignore
-            new Color(color).darken(0.65)
+            new Color(color).darken(0.8).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-dark-hover",
-            // @ts-ignore
-            new Color(color).darken(0.6)
+            new Color(color).darken(0.75).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-light-alpha",
-            // @ts-ignore
-            new Color(color).lighten(0.785)
+            new Color(color).lighten(0.785).toString()
         );
         root.style.setProperty(
             "--theme-color-extreme-dark-alpha",
-            // @ts-ignore
-            new Color(color).darken(0.3)
+            new Color(color).darken(0.8).alpha(0.6).toString()
+        );
+        root.style.setProperty(
+            "--theme-color-extreme-light-alpha",
+            new Color(color).lighten(0.8).alpha(0.6).toString()
         );
     }
 }

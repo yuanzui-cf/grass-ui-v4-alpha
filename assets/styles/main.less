@@ -67,6 +67,7 @@ body {
         height: 60px;
         padding: 10px 15px;
         margin: 0 3px 0 0;
+        background-color: var(--theme-color-extreme-light-alpha);
         backdrop-filter: blur(40px);
         overflow: hidden;
         user-select: none;
@@ -75,6 +76,11 @@ body {
         align-items: center;
         gap: 10px;
         z-index: 100;
+        transition: background-color 0.3s ease-in-out;
+
+        .dark({
+            background-color: var(--theme-color-extreme-dark-alpha);
+        });
 
         > div {
             box-sizing: border-box;

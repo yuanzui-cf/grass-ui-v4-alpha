@@ -5,7 +5,7 @@ interface RGBInterface {
     a?: number;
 }
 
-class RGB implements RGBInterface {
+export class RGB implements RGBInterface {
     r: number = 0;
     g: number = 0;
     b: number = 0;
@@ -45,7 +45,15 @@ export class Color {
             this.rgb = this.HexToRGB(color);
         } else {
             // Test for rgb
-            if (color.r > 255 || color.g > 255 || color.b > 255) {
+            if (
+                color.r > 255 ||
+                color.r < 0 ||
+                color.g > 255 ||
+                color.g < 0 ||
+                color.b > 255 ||
+                color.b < 0 ||
+                (color.a && (color.a > 1 || color.a < 0))
+            ) {
                 throw new Error("Invalid color");
             }
             this.rgb = color;
@@ -55,10 +63,10 @@ export class Color {
 
     RGBToHex(rgb: RGB): string {
         let color: {
-            r: string,
-            g: string,
-            b: string,
-            a: string | undefined
+            r: string;
+            g: string;
+            b: string;
+            a: string | undefined;
         } = {
             r: "00",
             g: "00",
@@ -68,7 +76,7 @@ export class Color {
         type rgba = "r" | "g" | "b" | "a";
         for (const k in this.rgb) {
             const v: number | undefined = this.rgb[k as rgba]!;
-            (k === "a")
+            k === "a"
                 ? (() => {
                       if (!v) return;
                       color["a"] = (v * 255).toString(16);
@@ -88,7 +96,8 @@ export class Color {
             Object.keys(color)
                 .map((k) => {
                     return color[k as rgba] || "";
-                }).join('')
+                })
+                .join("")
         );
     }
 
@@ -113,5 +122,30 @@ export class Color {
         }
         this.hex = this.RGBToHex(this.rgb);
         return this;
+    }
+
+    darken(level: number): Color {
+        type rgb = "r" | "g" | "b";
+        for (const k in this.rgb) {
+            if (k != "a") {
+                const v: number = this.rgb[k as rgb];
+                this.rgb[k as rgb] = Math.floor(v - v * level);
+            }
+        }
+        this.hex = this.RGBToHex(this.rgb);
+        return this;
+    }
+
+    alpha(level: number): Color {
+        if (level > 1) {
+            return this;
+        }
+        this.rgb.a = level;
+        this.hex = this.RGBToHex(this.rgb);
+        return this;
+    }
+
+    toString(): string {
+        return this.hex;
     }
 }
