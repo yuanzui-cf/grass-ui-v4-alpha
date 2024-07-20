@@ -3,13 +3,8 @@
 @import url(./util.less);
 
 ::selection {
-    background-color: var(--theme-color-dark);
-    color: var(--theme-color-extreme-light);
-
-    .dark({
-        background-color: var(--theme-color-extreme-light);
-        color: var(--theme-color-extreme-dark);
-    });
+    background-color: var(--runtime-selection);
+    color: var(--runtime-background);
 }
 
 ::-webkit-scrollbar {
@@ -35,6 +30,8 @@
     -webkit-tap-highlight-color: transparent;
 
     --theme-radius: 10px;
+
+    .runtime();
 }
 
 html,
@@ -49,14 +46,11 @@ body,
 }
 
 body {
-    background-color: var(--theme-color-extreme-light);
-    color: var(--theme-color-extreme-dark);
     transition: background-color 0.3s ease-in-out;
+    background-color: var(--runtime-background);
+    color: var(--runtime-color);
 
-    .dark({
-        background-color: var(--theme-color-extreme-dark);
-        color: var(--theme-color-extreme-light);
-    });
+    .dark(.runtime(true));
 }
 
 #app {
@@ -69,7 +63,7 @@ body {
         height: 60px;
         padding: 10px 15px;
         margin: 0 3px 0 0;
-        background-color: var(--theme-color-extreme-light-alpha);
+        background-color: var(--runtime-header);
         backdrop-filter: blur(40px);
         overflow: hidden;
         user-select: none;
@@ -79,10 +73,6 @@ body {
         gap: 10px;
         z-index: 100;
         transition: background-color 0.3s ease-in-out;
-
-        .dark({
-            background-color: var(--theme-color-extreme-dark-alpha);
-        });
 
         > div {
             box-sizing: border-box;

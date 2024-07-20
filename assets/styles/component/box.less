@@ -3,18 +3,16 @@
     width: 100%;
     height: var(--height);
     padding: 30px;
-    background-color: var(--theme-color-extreme-light-hover);
-    border: 2px solid var(--theme-color-dark);
+    background-color: var(--runtime-box);
+    border: 2px solid var(--runtime-border);
     border-radius: var(--theme-radius);
     display: flex;
     flex-direction: column;
     gap: 10px;
     transition: all 0.3s ease-in-out;
 
-    .dark({
-        background-color: var(--theme-color-extreme-dark-hover);
-        border: 2px solid var(--theme-color-extreme-light);
-    });
+    .runtime();
+    .dark(.runtime(true));
 
     .mobile({
         padding: 20px;
