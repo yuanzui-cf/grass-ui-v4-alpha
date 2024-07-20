@@ -6,7 +6,7 @@ export class GrassUIEvent {
     root: HTMLElement = document.querySelector(":root")!;
 
     // Settings
-    darkmode = "normal";
+    darkmode = "0";
     theme: ThemeConfig;
 
     constructor(config: Config) {
@@ -30,14 +30,18 @@ export class GrassUIEvent {
     }
 
     async onDarkModeChange() {
-        if (this.root.style.colorScheme != this.darkmode) {
-            this.root.style.colorScheme = this.darkmode;
+        if (this.darkmode == "1") {
+            this.root.setAttribute("dark", "");
+        } else {
+            this.root.removeAttribute("dark");
         }
     }
 
-    async setDarkMode(mode: string) {
+    async setDarkMode(mode: string, save: boolean = true) {
         this.darkmode = mode;
-        localStorage.setItem("darkmode", this.darkmode);
+        if (save) {
+            localStorage.setItem("darkmode", this.darkmode);
+        }
     }
 
     async onThemeColorChange() {

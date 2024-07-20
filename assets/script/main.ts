@@ -12,8 +12,15 @@ export default class GrassUI extends GrassUIEvent {
     }
 
     init() {
-        const darkmode = localStorage.getItem("darkmode") || "normal";
-        this.setDarkMode(darkmode);
+        let darkmode = localStorage.getItem("darkmode");
+        if (!darkmode) {
+            const dark = window.matchMedia("(prefers-color-scheme: dark)");
+            darkmode = dark.matches ? "1" : "0";
+            dark.onchange = () => {
+                this.setDarkMode(dark.matches ? "1" : "0", false);
+            };
+        }
+        this.setDarkMode(darkmode, false);
 
         window.addEventListener("load", () => {
             this.initSlide();
