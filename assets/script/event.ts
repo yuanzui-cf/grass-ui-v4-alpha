@@ -85,11 +85,13 @@ export class GrassUIEvent {
         );
         root.style.setProperty(
             "--theme-color-extreme-light-alpha",
-            new Color(color).lighten(0.785).alpha(0.2);
+            // @ts-ignore
+            new Color(color).lighten(0.785)
         );
         root.style.setProperty(
             "--theme-color-extreme-dark-alpha",
-            new Color(color).darken(0.3).alpha(0.2);
+            // @ts-ignore
+            new Color(color).darken(0.3)
         );
     }
 }

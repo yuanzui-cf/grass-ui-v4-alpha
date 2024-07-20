@@ -2,6 +2,7 @@ import "../styles/main.less";
 import "../styles/component.less";
 import { GrassUIEvent } from "./event";
 import { Slide } from "./component/slide.js";
+import { Color } from "./util/color";
 
 export default class GrassUI extends GrassUIEvent {
     init() {
@@ -18,6 +19,9 @@ export default class GrassUI extends GrassUIEvent {
             this.initSlide();
             this.initTheme();
         });
+        
+        let c = new Color("#C70039");
+        console.log(c, c.lighten())
 
         this.listen();
     }

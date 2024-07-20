@@ -37,7 +37,7 @@ export class Color {
     constructor(color: string | RGB) {
         if (typeof color === "string") {
             // Test for hex
-            let rule = /^\#?[0-9A-Fa-f]{6}$/;
+            let rule = /^\#([0-9A-Fa-f]{8}|[0-9A-Fa-f]{6})$/;
             if (!rule.test(color)) {
                 throw new Error("Invalid color");
             }
@@ -54,11 +54,41 @@ export class Color {
     }
 
     RGBToHex(rgb: RGB): string {
+        let color: {
+            r: string,
+            g: string,
+            b: string,
+            a: string | undefined
+        } = {
+            r: "00",
+            g: "00",
+            b: "00",
+            a: undefined,
+        };
+        type rgba = "r" | "g" | "b" | "a";
+        for (const k in this.rgb) {
+            const v: number | undefined = this.rgb[k as rgba]!;
+            (k === "a")
+                ? (() => {
+                      if (!v) return;
+                      color["a"] = (v * 255).toString(16);
+                      if (v * 255 < 16) {
+                          color["a"] = "0" + color["a"];
+                      }
+                  })()
+                : (() => {
+                      color[k as rgba] = v.toString(16);
+                      if (v < 16) {
+                          color[k as rgba] = "0" + color[k as rgba];
+                      }
+                  })();
+        }
         return (
             "#" +
-            ((1 << 24) + (rgb.r << 16) + (rgb.g << 8) + rgb.b)
-                .toString(16)
-                .slice(1)
+            Object.keys(color)
+                .map((k) => {
+                    return color[k as rgba] || "";
+                }).join('')
         );
     }
 
@@ -67,7 +97,9 @@ export class Color {
         rgb.r = parseInt(hex.substring(1, 3), 16);
         rgb.g = parseInt(hex.substring(3, 5), 16);
         rgb.b = parseInt(hex.substring(5, 7), 16);
-        console.log(rgb);
+        if (hex.length > 7) {
+            rgb.a = parseInt(hex.substring(7, 9), 16);
+        }
         return rgb;
     }
 

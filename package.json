@@ -2,7 +2,7 @@
     "name": "grassui",
     "version": "1.0.0",
     "scripts": {
-        "dev": "rollup -wc",
+        "dev": "rollup",
         "prod": "rollup --config rollup.config.product.js"
     },
     "author": "",
