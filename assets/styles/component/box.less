@@ -11,8 +11,12 @@
     gap: 10px;
     transition: all 0.3s ease-in-out;
 
-    .runtime();
-    .dark(.runtime(true));
+    .runtimeLight({
+        --runtime-box: var(--theme-color-extreme-light-hover);
+    });
+    .dark(.runtimeDark({
+        --runtime-box: var(--theme-color-extreme-dark-hover);
+    }));
 
     .mobile({
         padding: 20px;

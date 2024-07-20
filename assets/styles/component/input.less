@@ -2,13 +2,78 @@
     box-sizing: border-box;
     width: 100%;
     height: 34px;
-    padding: 5px 8px;
-    border: solid 2px var(--theme-color-dark);
-    border-radius: var(--theme-radius);
+    padding: 5px 12px;
+    color: var(--runtime-color);
+    border: none;
     outline: none;
 }
 
 input.gui-input,
 label.gui-input > input {
     .gui-input();
+}
+
+label.gui-input,
+input.gui-input,
+textarea.gui-input {
+    background-color: var(--runtime-input);
+    border: solid 2px var(--runtime-border);
+    border-radius: var(--theme-radius);
+    transition: all 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+        background-color: var(--runtime-input-hover);
+    }
+
+    .runtimeLight({
+        --runtime-input: var(--theme-color-extreme-light);
+        --runtime-input-hover: var(--theme-color-extreme-light-hover);
+    });
+    .dark(.runtimeDark({
+        --runtime-input: var(--theme-color-extreme-dark);
+        --runtime-input-hover: var(--theme-color-extreme-dark-hover);
+    }));
+}
+
+label.gui-input {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    > * {
+        box-sizing: border-box;
+        width: auto;
+        min-width: auto !important;
+        height: 100%;
+        padding: 5px !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background-color: transparent !important;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+
+    > *:first-child {
+        padding-left: 12px !important;
+    }
+
+    > *:last-child {
+        padding-right: 12px !important;
+    }
+}
+
+textarea.gui-input {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    padding: 10px;
+    color: var(--runtime-color);
+    outline: none;
+    font-family: sans-serif;
+    transition: height 0s, background-color 0.2s ease-in-out;
 }

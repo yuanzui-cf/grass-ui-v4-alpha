@@ -20,24 +20,20 @@
     }
 }
 
-.runtime(@dark) when(@dark = true) {
+.runtimeDark(@mixin) {
     --runtime-selection: var(--theme-color-extreme-light);
     --runtime-background: var(--theme-color-extreme-dark);
     --runtime-color: var(--theme-color-extreme-light);
     --runtime-header: var(--theme-color-extreme-dark-alpha);
     --runtime-border: var(--theme-color-extreme-light);
-    --runtime-box: var(--theme-color-extreme-dark-hover);
-    --runtime-button: var(--theme-color-dark);
-    --runtime-button-hover: var(--theme-color-dark-hover);
+    @mixin();
 }
 
-.runtime() {
+.runtimeLight(@mixin) {
     --runtime-selection: var(--theme-color-dark);
     --runtime-background: var(--theme-color-extreme-light);
     --runtime-color: var(--theme-color-extreme-dark);
     --runtime-header: var(--theme-color-extreme-light-alpha);
     --runtime-border: var(--theme-color-dark);
-    --runtime-box: var(--theme-color-extreme-light-hover);
-    --runtime-button: var(--theme-color-light);
-    --runtime-button-hover: var(--theme-color-light-hover);
+    @mixin();
 }

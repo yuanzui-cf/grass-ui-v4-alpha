@@ -16,8 +16,14 @@
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
-        .runtime();
-        .dark(.runtime(true));
+        .runtimeLight({
+            --runtime-button: var(--theme-color-light);
+            --runtime-button-hover: var(--theme-color-light-hover);
+        });
+        .dark(.runtimeDark({
+            --runtime-button: var(--theme-color-dark);
+            --runtime-button-hover: var(--theme-color-dark-hover);
+        }));
 
         &:hover {
             background-color: var(--runtime-button-hover);
