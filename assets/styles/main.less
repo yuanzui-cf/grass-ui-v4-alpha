@@ -152,4 +152,24 @@ body {
         display: flex;
         flex-direction: column;
     }
+
+    a {
+        color: var(--runtime-link);
+
+        &:hover {
+            .runtimeLight({
+                --runtime-link: var(--theme-color-extreme-dark);
+            });
+            .dark(.runtimeDark({
+                --runtime-link: var(--theme-color-extreme-light);
+            }));
+        }
+
+        .runtimeLight({
+            --runtime-link: var(--theme-color-extreme-dark-hover);
+        });
+        .dark(.runtimeDark({
+            --runtime-link: var(--theme-color-extreme-light-hover);
+        }));
+    }
 }
