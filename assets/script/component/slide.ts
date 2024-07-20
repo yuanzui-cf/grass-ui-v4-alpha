@@ -49,6 +49,11 @@ export class Slide {
         window.addEventListener("resize", changeSize);
         changeSize();
 
+        this.ele?.children[0].setAttribute("now", "");
+        !this.ele?.children[0].classList.contains("display")
+            ? this.ele?.children[0].classList.add("display")
+            : null;
+
         // Switch
         if (this._timer !== -1) {
             clearInterval(this._timer);
