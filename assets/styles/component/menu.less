@@ -1,0 +1,55 @@
+.gui-menu {
+    --max-height: 400px;
+    box-sizing: border-box;
+    position: fixed;
+    left: var(--left);
+    top: var(--top);
+    right: var(--right);
+    bottom: var(--bottom);
+    width: 200px;
+    max-height: var(--max-height);
+    padding: 15px;
+    background-color: white;
+    border-radius: var(--theme-radius);
+    box-shadow: 0 0 10px rgba(35, 35, 35, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 200;
+
+    > div {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: var(--theme-radius);
+        font-size: 14px;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: rgb(245, 245, 245);
+        }
+    }
+
+    > hr {
+        border: solid 1px var(--runtime-color);
+        margin: 5px 15px;
+    }
+
+    > p {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 15px;
+        color: rgb(145, 145, 145);
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
