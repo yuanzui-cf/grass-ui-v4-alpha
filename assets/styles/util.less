@@ -33,3 +33,11 @@
     --runtime-border: var(--theme-color-dark);
     @mixin();
 }
+
+.animation(@delay, @duration, @fillMode, @direction) {
+    animation-delay: @delay;
+    animation-duration: @duration;
+    animation-fill-mode: @fillMode;
+    animation-direction: @direction;
+    animation-timing-function: ease-in-out;
+}

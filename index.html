@@ -18,8 +18,17 @@
                 },
             });
             window.addEventListener("load", () => {
+                const menu = new g.component.Menu(
+                    document.querySelector(".gui-menu")
+                );
+                menu.on("click", (e) => {
+                    console.log(e);
+                });
                 document.querySelector("#darkmode").onclick = () => {
                     g.setDarkMode(g.darkmode == "1" ? "0" : "1");
+                };
+                document.querySelector("#menu").onclick = () => {
+                    menu.switch();
                 };
             });
         </script>

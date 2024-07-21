@@ -2,9 +2,15 @@ import "../styles/main.less";
 import "../styles/component.less";
 import { GrassUIEvent } from "./event";
 import { Slide } from "./component/slide.js";
+import { Menu } from "./component/menu";
 import Config from "./config";
 
 export default class GrassUI extends GrassUIEvent {
+    component = {
+        Menu,
+        Slide,
+    };
+
     constructor(config: Config) {
         super(config);
 
@@ -23,15 +29,15 @@ export default class GrassUI extends GrassUIEvent {
         this.setDarkMode(darkmode, false);
 
         window.addEventListener("load", () => {
-            this.initSlide();
             this.initTheme();
+            this.initSlide();
         });
 
         this.listen();
     }
 
     async initSlide() {
-        const slide = window.document.querySelectorAll(".gui-slide");
+        const slide = document.querySelectorAll(".gui-slide");
         slide.forEach((item) => {
             new Slide(item as HTMLElement).build();
         });
@@ -40,8 +46,7 @@ export default class GrassUI extends GrassUIEvent {
     async initTheme() {
         // Color
         (async () => {
-            const color =
-                window.document.querySelectorAll("[data-theme-color]");
+            const color = document.querySelectorAll("[data-theme-color]");
             color.forEach((item) => {
                 this.changeThemeColor(
                     item.getAttribute("data-theme-color")!,
@@ -50,9 +55,7 @@ export default class GrassUI extends GrassUIEvent {
             });
         })();
         (async () => {
-            const radius = window.document.querySelectorAll(
-                "[data-theme-radius]"
-            );
+            const radius = document.querySelectorAll("[data-theme-radius]");
             radius.forEach((item) => {
                 this.changeThemeColor(
                     item.getAttribute("data-theme-radius")!,

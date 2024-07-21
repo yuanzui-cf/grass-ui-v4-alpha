@@ -1,13 +1,8 @@
 export class Slide {
-    /** @type {HTMLElement} */
-    ele;
-    /** @type {number} */
+    ele: HTMLElement;
     _stay_time = 5000;
-    /** @type {number} */
     _timer = -1;
-    /** @type {number} */
     _now = 0;
-    /** @type {[number, number]} */
     _scale = [7.7, 3];
 
     constructor(ele: HTMLElement) {

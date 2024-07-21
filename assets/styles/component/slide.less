@@ -36,22 +36,14 @@
         width: 100%;
     }
 
-    .animation() {
-        animation-delay: 0s;
-        animation-duration: 0.5s;
-        animation-fill-mode: forwards;
-        animation-direction: normal;
-        animation-timing-function: ease-in-out;
-    }
-
     &-in {
         animation-name: gui-slide-in;
-        .animation();
+        .animation(0s, 0.5s, forwards, normal);
     }
 
     &-out {
         animation-name: gui-slide-out;
-        .animation();
+        .animation(0s, 0.5s, forwards, normal);
     }
 
     > img,
