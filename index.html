@@ -17,6 +17,11 @@
                     radius: "10px",
                 },
             });
+            window.addEventListener("load", () => {
+                document.querySelector("#darkmode").onclick = () => {
+                    g.setDarkMode(g.darkmode == "1" ? "0" : "1");
+                };
+            });
         </script>
     </head>
     <body>
@@ -34,12 +39,12 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </label>
-                        <button class="gui-button-icon">
-                            <i class="fa-solid fa-user"></i>
+                        <button class="gui-button-icon" id="darkmode">
+                            <i class="fa-solid fa-moon"></i>
                         </button>
-                        <button class="gui-button">
-                            <i class="fa-solid fa-user"></i>
-                            Start
+                        <button class="gui-button" id="menu">
+                            <i class="fa-solid fa-bars"></i>
+                            Menu
                         </button>
                     </div>
                 </div>
