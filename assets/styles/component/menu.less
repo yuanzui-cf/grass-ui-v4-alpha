@@ -39,12 +39,8 @@
     display: none;
     flex-direction: column;
     gap: 5px;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
     z-index: 200;
-
-    &[current] {
-        background-color: rgb(245, 245, 245);
-    }
 
     &-open {
         animation-name: gui-menu-open;
@@ -92,6 +88,10 @@
         cursor: pointer;
         user-select: none;
         transition: background 0.3s ease, color 0s ease;
+
+        &[current] {
+            background-color: rgb(245, 245, 245);
+        }
 
         &:hover {
             background-color: rgb(245, 245, 245);
