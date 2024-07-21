@@ -40,7 +40,6 @@ export class Menu {
             });
         });
 
-        this._check();
         return this;
     }
 
@@ -90,15 +89,6 @@ export class Menu {
                 this.ele.classList.remove("gui-menu-close");
             }, 500);
         }
-    }
-
-    async _check() {
-        if (!this._open && this.ele.classList.contains("display")) {
-            this._switch(false);
-        } else if (this._open && !this.ele.classList.contains("display")) {
-            this._switch(true);
-        }
-        setTimeout(() => this._check(), 100);
     }
 
     _initHeight() {
